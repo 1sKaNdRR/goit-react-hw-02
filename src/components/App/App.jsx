@@ -14,19 +14,12 @@ export default function App() {
     return savedFeedback ? JSON.parse(savedFeedback) : { good: 0, neutral: 0, bad: 0 };
   });
   
-  useEffect(() => {
-    const savedFeedback = localStorage.getItem('feedback');
 
-    if (savedFeedback) {
-      setFeedback(JSON.parse(savedFeedback));
-    }
-  },
-    []);
   
   useEffect(() => {
     localStorage.setItem('feedback', JSON.stringify(feedback));
-    [feedback]
-  });
+    
+  },[feedback]);
 
     const updateFeedback = (feedbackType) => {
         setFeedback((prevFeedback) => ({
